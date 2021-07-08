@@ -4,54 +4,44 @@ import { LoginService } from 'src/app/services/login.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  credentials = {
+    username: '',
+    password: '',
+  };
+  constructor(private loginService: LoginService) {}
 
-  credentials={
-    username:'',
-    password:''
-  }
-  constructor(private loginService: LoginService) { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
-
-  onSubmit(){
+  onSubmit() {
     // console.log("Form is submitted");
 
-    if((this.credentials.username!="" && this.credentials.password!='') && (this.credentials.username!=null && this.credentials.password!=null)){
-      
-      // token generate 
+    if (
+      this.credentials.username != '' &&
+      this.credentials.password != '' &&
+      this.credentials.username != null &&
+      this.credentials.password != null
+    ) {
+      // token generate
 
-      console.log("We have to submit the form to server");
+      console.log('We have to submit the form to server');
 
       this.loginService.generateToken(this.credentials).subscribe(
-        (response:any)=>{
+        (response: any) => {
           // success
           console.log(response.token);
           this.loginService.loginUser(response.token);
-          window.location.href="/dashboard";
-          
-          
+          window.location.href = '/dashboard';
         },
-        error=>{
-          // error 
+        (error) => {
+          // error
           console.log(error);
-          
         }
-
-      )
-
+      );
+    } else {
+      console.log('Fields are empty');
     }
-    else{
-      console.log("Fields are empty");
-
-    }
-
-
   }
-
-
-
 }

@@ -14,6 +14,10 @@ export class LoginService {
     return this.http.post(`${this.url}/token`,credentials);
   }
 
+  generateRegisterToken(credentials: any){
+    return this.http.post(`${this.url}/register`,credentials);
+  }
+
   loginUser(token: any){
     localStorage.setItem("token",token);
     return true;
