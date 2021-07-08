@@ -34,13 +34,11 @@ export class LoginService {
     else{
       return true;
     }
-
   }
 
   logout(){
     localStorage.removeItem('token');
     return true;
-
   }
 
   getToken(){
