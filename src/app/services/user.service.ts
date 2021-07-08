@@ -15,6 +15,5 @@ export class UserService {
 
    getUser(){
      return this.http.get(`${this.baseUrl}/getusers`)
-     
    }
 }

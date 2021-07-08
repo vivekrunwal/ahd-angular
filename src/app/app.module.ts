@@ -17,6 +17,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginService } from './services/login.service';
 import { AuthGuard } from './services/auth.guard';
 import { AuthInterceptor } from './services/auth.interceptor';
+import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AuthInterceptor } from './services/auth.interceptor';
     NavBarComponent,
     HomeComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

@@ -8,15 +8,11 @@ export class LoginService {
 
   url="http://localhost:8080";
 
-
   constructor(private http:HttpClient) { }
 
   generateToken(credentials: any){
-
     return this.http.post(`${this.url}/token`,credentials);
-
   }
-
 
   loginUser(token: any){
     localStorage.setItem("token",token);
