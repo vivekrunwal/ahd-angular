@@ -13,7 +13,7 @@
         <h1 class="text-center">Login here</h1>
         <form (ngSubmit)="onSubmit()">
           <mat-form-field class="full-width" appearance="outline">
-            <mat-label> Username </mat-label>
+            <mat-label> Email or Mobile </mat-label>
             <input
               [(ngModel)]="credentials.username"
               required
@@ -32,6 +32,7 @@
               matInput
             />
           </mat-form-field>
+          <p class="text-center mt" *ngIf="error"> {{ error }}</p>
           <div class="container text-center">
             <button type="submit" mat-raised-button color="primary">
               Login
@@ -48,6 +49,8 @@
         </form>
             <br>
        <!-- <p class="mt"> {{ credentials | json }}</p> -->
+       <!-- <h6 *ngIf="error">{{error}}</h6> -->
+      
       </div>
     </div>
   </div>

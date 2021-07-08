@@ -7,6 +7,7 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  error : any;
 
   credentials={
     name:'',
@@ -48,6 +49,7 @@ export class SignupComponent implements OnInit {
         (error) => {
           // error
           console.log(error);
+          this.error = "User already Registered"
         }
       );
     } else {

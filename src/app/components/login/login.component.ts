@@ -6,7 +6,10 @@ import { LoginService } from 'src/app/services/login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
+
 export class LoginComponent implements OnInit {
+
+  error : any;
   credentials = {
     username: '',
     password: '',
@@ -37,7 +40,9 @@ export class LoginComponent implements OnInit {
         },
         (error) => {
           // error
+          this.error = "Bad Credentials";
           console.log(error);
+
         }
       );
     } else {
