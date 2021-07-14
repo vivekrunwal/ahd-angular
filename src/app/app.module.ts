@@ -40,7 +40,7 @@ import { SignupComponent } from './components/signup/signup.component';
     HttpClientModule
 
   ],
-  providers: [LoginService,AuthGuard,[{provide:HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true}]],
+  providers: [LoginService,AuthGuard,[{provide:HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true}],],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,121 @@
 <div class="bootstrap-wrapper">
   <div class="container text-center mt">
+    <div class="row">
+      <div class="col-md-5 offset-md-3">
     <h1>Welcome to User Panel</h1>
     <h1 *ngIf="user">User is {{user.name}}</h1>
     <button (click)="getUser()" mat-raised-button> Get Details </button>
+
+    <form (ngSubmit)="onSubmit()" style="margin-top: 20px;">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label> First Name </mat-label>
+        <input
+          [(ngModel)]="credentials.firstName"
+          required
+          type="text"
+          name="firstName"
+          matInput
+        />
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Last Name </mat-label>
+      <input
+          [(ngModel)]="credentials.lastName"
+          required
+          type="text"
+          name="lastName"
+          matInput
+        />
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label> Date of Birth </mat-label>
+      <input
+          [(ngModel)]="credentials.dateOfBirth"
+          required
+          type="text"
+          name="dateOfBirth"
+          matInput
+        />
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label> Address </mat-label>
+      <input
+          [(ngModel)]="credentials.address"
+          required
+          type="text"
+          name="address"
+          matInput
+        />
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+          <mat-label> Aadhar Number</mat-label>
+          <input
+            [(ngModel)]="credentials.aadharNumber"
+            required
+            type="text"
+            name="aadharNumber"
+            matInput
+          />
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label> PAN Number </mat-label>
+          <input
+            [(ngModel)]="credentials.panNumber"
+            required
+            type="text"
+            name="panNumber"
+            matInput
+          />
+        </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+
+        <mat-label> Mobile Number </mat-label>
+        <input
+          [(ngModel)]="credentials.mobileNumber"
+          required
+          name="mobileNumber"
+          type="text"
+          matInput
+        />
+      </mat-form-field>
+
+      <mat-form-field class="take-width" appearance="outline">
+
+        <mat-label> UHID </mat-label>
+        <input
+          [(ngModel)]="credentials.uhid"
+          required
+          name="uhid"
+          type="text"
+          matInput
+        />
+        <mat-hint>Fill Adhaar card no. to fetch uhid</mat-hint>
+      </mat-form-field>
+
+      <button style="margin-left: 30px;" type="button" (click)="getUhid()" mat-raised-button color="primary">
+        Get UHID
+      </button>
+
+      <p class="text-center mt" *ngIf="response"> {{ response }}</p>
+
+      <div class="container text-center" style="margin-bottom: 50px;">
+
+        <button type="submit" mat-raised-button color="primary">
+          Create Patient
+        </button>
+       
+        <button
+          style="margin: 10px"
+          type="reset"
+          mat-raised-button
+          color="accent"
+        >
+          Reset
+        </button>
+      </div>
+    </form>
+  </div>
+</div>  
   </div>
 </div>
