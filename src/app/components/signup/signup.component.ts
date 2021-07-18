@@ -4,26 +4,29 @@ import { LoginService } from 'src/app/services/login.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit {
-  error : any;
+  error: any;
+  progress: any;
 
-  credentials={
-    name:'',
-    emailOrMobile:'',
-    role:'',
-    enabled:true,
-    password:'',
-  }
+  credentials = {
+    name: '',
+    emailOrMobile: '',
+    role: '',
+    enabled: true,
+    password: '',
+  };
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService) {}
 
   ngOnInit(): void {
+    this.progress = 0;
   }
 
   onSubmit() {
     // console.log("Form is submitted");
+    this.progress = 50;
 
     if (
       this.credentials.name != '' &&
@@ -31,8 +34,8 @@ export class SignupComponent implements OnInit {
       this.credentials.role != '' &&
       this.credentials.password != '' &&
       this.credentials.name != null &&
-      this.credentials.emailOrMobile != null&&
-      this.credentials.role != null&&
+      this.credentials.emailOrMobile != null &&
+      this.credentials.role != null &&
       this.credentials.password != null
     ) {
       // token generate
@@ -44,17 +47,18 @@ export class SignupComponent implements OnInit {
           // success
           console.log(response.token);
           this.loginService.loginUser(response.token);
-          window.location.href = '/dashboard';
+          this.progress = 100;
+          window.location.href = '/searchPatient';
         },
         (error) => {
+          this.progress = 0;
           // error
           console.log(error);
-          this.error = "User already Registered"
+          this.error = 'User already Registered';
         }
       );
     } else {
       console.log('Fields are empty');
     }
   }
-
 }

@@ -1,0 +1,89 @@
+<div class="bootstrap-wrapper">
+  <div class="container text-center mt">
+    <div class="row">
+      <div class="col-md-5 offset-md-3">
+        <mat-form-field class="select">
+          <mat-label> Credential</mat-label>
+          <mat-select [(value)]="selected">
+            <mat-option value="adhaar">Adhaar Number</mat-option>
+            <mat-option value="panNumber">PAN Number</mat-option>
+            <mat-option value="mobile">Mobile Number</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field
+          *ngIf="this.selected == this.selectAdhaar"
+          class="full-width"
+          appearance="outline"
+        >
+          <mat-label> Aadhar Number</mat-label>
+          <input
+            [(ngModel)]="aadharNumber"
+            required
+            type="text"
+            name="aadharNumber"
+            matInput
+          />
+        </mat-form-field>
+
+        <mat-form-field
+          *ngIf="this.selected == this.selectPan"
+          class="full-width"
+          appearance="outline"
+        >
+          <mat-label> PAN Number </mat-label>
+          <input
+            [(ngModel)]="panNumber"
+            required
+            type="text"
+            name="panNumber"
+            matInput
+          />
+        </mat-form-field>
+        <mat-form-field
+          *ngIf="this.selected == this.selectMob"
+          class="full-width"
+          appearance="outline"
+        >
+          <mat-label> Mobile Number </mat-label>
+          <input
+            [(ngModel)]="mobileNumber"
+            required
+            name="mobileNumber"
+            type="text"
+            matInput
+          />
+        </mat-form-field>
+        <p class="text-center mt" *ngIf="response">{{ response }}</p>
+
+        <mat-form-field *ngIf="uhid" class="full-width" appearance="outline">
+          <mat-label> UHID </mat-label>
+          <input [(ngModel)]="uhid" required name="uhid" type="text" matInput />
+          <!-- <mat-hint>Fill {{ selected }} no. to fetch uhid</mat-hint> -->
+        </mat-form-field>
+
+        <div class="container text-center" style="margin-bottom: 50px">
+          <button
+            type="button"
+            (click)="getUhid()"
+            mat-raised-button
+            color="primary"
+          >
+            Fetch Uhid
+          </button>
+
+          <button
+            *ngIf="uhid"
+            style="margin: 10px"
+            mat-raised-button
+            color="primary"
+            type="button"
+            (click)="addPatient()"
+          >
+            Add Patient
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

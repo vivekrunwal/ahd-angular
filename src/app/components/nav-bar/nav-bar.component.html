@@ -1,8 +1,25 @@
 <mat-toolbar color="primary">
-    <span><a mat-icon-button routerLink="/"> Access Health Care  </a></span>
- 
-    <span class="example-spacer"></span>
-    <a *ngIf="!loggedIn"  mat-icon-button routerLink="/login">Login</a>
-    <a mat-icon-button *ngIf="loggedIn" >User</a>
-    <a  *ngIf="loggedIn" (click)="logoutUser()" mat-icon-button>Logout</a>
+  <span
+    ><a mat-icon-button routerLink="/dashboard"> Access Health Care </a></span
+  >
+  <a
+    *ngIf="loggedIn"
+    style="margin-left: 100px"
+    routerLink="/searchPatient"
+    mat-raised-button
+    color="accent"
+    >Search
+  </a>
+  <a
+    *ngIf="loggedIn"
+    style="margin-left: 10px"
+    routerLink="/searchNew"
+    mat-raised-button
+    color="accent"
+    >Add Patient
+  </a>
+  <span class="example-spacer"></span>
+  <a *ngIf="!loggedIn" mat-icon-button routerLink="/login">Login</a>
+  <a mat-icon-button *ngIf="loggedIn">User</a>
+  <a *ngIf="loggedIn" (click)="logoutUser()" mat-icon-button>Logout</a>
 </mat-toolbar>

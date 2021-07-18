@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { PassService } from 'src/app/services/pass.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -9,21 +10,36 @@ import { UserService } from 'src/app/services/user.service';
 export class DashboardComponent implements OnInit {
   user: any;
   response: any;
+  selected: any;
+  selectAdhaar: any;
+  selectPan: any;
+  selectMob: any;
+  myUhidCred: any;
 
   credentials = {
     firstName: '',
     lastName: '',
     dateOfBirth: '',
     address: '',
-    aadharNumber: '',
-    panNumber: '',
-    mobileNumber: '',
     uhid: '',
   };
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private passService: PassService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.selected = 'adhaar';
+    this.selectAdhaar = 'adhaar';
+    this.selectMob = 'mobile';
+    this.selectPan = 'panNumber';
+    if (this.passService.getUhid() != null) {
+      console.log('dssh1', this.passService.getUhid());
+      this.credentials.uhid = this.passService.getUhid();
+      this.passService.clearData();
+    }
+  }
 
   getUser() {
     this.userService.getUser().subscribe(
@@ -39,40 +55,19 @@ export class DashboardComponent implements OnInit {
   }
 
   onSubmit() {
-
     this.userService.createPatient(this.credentials).subscribe(
       (patient) => {
         console.log(patient);
-        
+
         // this.user = user;
-        this.response = "Patient Created"
+        this.response = 'Patient Registered Successfully';
       },
       (error) => {
         console.log(error);
-        this.response = "Patient with given uhid already exists"
+
+        this.response = 'Invalid Credential or ID alreday exists';
       }
     );
     // console.log(this.credentials);
   }
-
-  getUhid(){
-
-    if(this.credentials.aadharNumber!=null && this.credentials.aadharNumber!=""){
-    this.userService.getUhid(this.credentials.aadharNumber).subscribe(
-      (myuhid) => {
-
-        console.log(this.credentials.aadharNumber);
-        console.log(myuhid);
-        
-        this.credentials.uhid = myuhid;
-        // this.user = user;
-      },
-      (error) => {
-        // console.log(this.credentials.aadharNumber);
-        console.log(error);
-      }
-    );
-  }
-}
-
 }

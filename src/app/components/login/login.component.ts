@@ -6,20 +6,23 @@ import { LoginService } from 'src/app/services/login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-
 export class LoginComponent implements OnInit {
+  error: any;
+  progress: number = 0;
 
-  error : any;
   credentials = {
     username: '',
     password: '',
   };
   constructor(private loginService: LoginService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.progress = 0;
+  }
 
   onSubmit() {
     // console.log("Form is submitted");
+    this.progress = 50;
 
     if (
       this.credentials.username != '' &&
@@ -36,13 +39,14 @@ export class LoginComponent implements OnInit {
           // success
           console.log(response.token);
           this.loginService.loginUser(response.token);
-          window.location.href = '/dashboard';
+          this.progress = 100;
+          window.location.href = '/searchPatient';
         },
         (error) => {
           // error
-          this.error = "Bad Credentials";
+          this.progress = 0;
+          this.error = 'Bad Credentials';
           console.log(error);
-
         }
       );
     } else {

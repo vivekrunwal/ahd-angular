@@ -1,4 +1,11 @@
 <div class="bootstrap-wrapper">
+  <mat-progress-bar
+    *ngIf="progress"
+    mode="determinate"
+    [(ngModel)]="progress"
+    value="{{ progress }}"
+    color="accent"
+  ></mat-progress-bar>
   <div class="container mt">
     <div class="row">
       <div class="col-md-6 offset-md-3">
@@ -32,26 +39,24 @@
               matInput
             />
           </mat-form-field>
-          <p class="text-center mt" *ngIf="error"> {{ error }}</p>
+          <p class="text-center mt" *ngIf="error">{{ error }}</p>
           <div class="container text-center">
             <button type="submit" mat-raised-button color="primary">
               Login
             </button>
-            
-            <button
+
+            <a
+              routerLink="/register"
               style="margin-left: 10px"
-              type="reset"
               mat-raised-button
               color="accent"
-            >
-              Reset
-            </button>
+              >Register
+            </a>
           </div>
         </form>
-            <br>
-       <!-- <p class="mt"> {{ credentials | json }}</p> -->
-       <!-- <h6 *ngIf="error">{{error}}</h6> -->
-      
+        <br />
+        <!-- <p class="mt"> {{ credentials | json }}</p> -->
+        <!-- <h6 *ngIf="error">{{error}}</h6> -->
       </div>
     </div>
   </div>

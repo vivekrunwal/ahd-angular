@@ -1,0 +1,49 @@
+<div class="bootstrap-wrapper">
+  <div class="container text-center mt">
+    <div class="row">
+      <div class="col-md-5 offset-md-3">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label> Enter UHID </mat-label>
+          <input
+            [(ngModel)]="uhid"
+            required
+            type="text"
+            name="firstName"
+            matInput
+          />
+        </mat-form-field>
+        <p class="text-center mt" *ngIf="response">{{ response }}</p>
+
+        <button
+          style="margin: 30px"
+          type="button"
+          mat-raised-button
+          color="primary"
+          (click)="getPatient()"
+        >
+          Search Patient
+        </button>
+
+        <table
+          *ngIf="dataSource"
+          mat-table
+          [dataSource]="dataSource | keyvalue: orderByKey"
+          class="mat-elevation-z8"
+        >
+          <ng-container matColumnDef="key">
+            <th mat-header-cell *matHeaderCellDef>Key</th>
+            <td mat-cell *matCellDef="let element">{{ element.key }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="value">
+            <th mat-header-cell *matHeaderCellDef>Value</th>
+            <td mat-cell *matCellDef="let element">{{ element.value }}</td>
+          </ng-container>
+
+          <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr> -->
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
