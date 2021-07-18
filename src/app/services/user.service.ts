@@ -26,4 +26,12 @@ export class UserService {
   searchPatient(uhid: any) {
     return this.http.get(`${this.baseUrl}/patients/uhid/${uhid}`);
   }
+
+  createEpisode(episode: any) {
+    return this.http.post(`${this.baseUrl}/visit/episode`, episode);
+  }
+
+  createEncounter(uhid: any, encounter: any) {
+    return this.http.post(`${this.baseUrl}/visit/encounter/${uhid}`, encounter);
+  }
 }

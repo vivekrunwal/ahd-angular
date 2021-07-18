@@ -23,6 +23,8 @@ import { SearchPatientComponent } from './components/search-patient/search-patie
 import { MatTableModule } from '@angular/material/table';
 import { MatRadioModule } from '@angular/material/radio';
 import { SearchNewComponent } from './components/search-new/search-new.component';
+import { EpisodeComponent } from './components/episode/episode.component';
+import { EncounterComponent } from './components/encounter/encounter.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { SearchNewComponent } from './components/search-new/search-new.component
     SignupComponent,
     SearchPatientComponent,
     SearchNewComponent,
+    EpisodeComponent,
+    EncounterComponent,
   ],
   imports: [
     BrowserModule,

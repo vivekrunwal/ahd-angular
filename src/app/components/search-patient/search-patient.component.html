@@ -13,16 +13,17 @@
           />
         </mat-form-field>
         <p class="text-center mt" *ngIf="response">{{ response }}</p>
-
-        <button
-          style="margin: 30px"
-          type="button"
-          mat-raised-button
-          color="primary"
-          (click)="getPatient()"
-        >
-          Search Patient
-        </button>
+        <div>
+          <button
+            style="margin: 5px"
+            type="button"
+            mat-raised-button
+            color="primary"
+            (click)="getPatient()"
+          >
+            Search Patient
+          </button>
+        </div>
 
         <table
           *ngIf="dataSource"

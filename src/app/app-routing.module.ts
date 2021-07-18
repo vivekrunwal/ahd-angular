@@ -8,6 +8,8 @@ import { AuthGuard } from './services/auth.guard';
 import { SignupComponent } from './components/signup/signup.component';
 import { SearchPatientComponent } from './components/search-patient/search-patient.component';
 import { SearchNewComponent } from './components/search-new/search-new.component';
+import { EpisodeComponent } from './components/episode/episode.component';
+import { EncounterComponent } from './components/encounter/encounter.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -28,6 +30,18 @@ const routes: Routes = [
   {
     path: 'searchNew',
     component: SearchNewComponent,
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'episode',
+    component: EpisodeComponent,
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'encounter',
+    component: EncounterComponent,
     pathMatch: 'full',
     canActivate: [AuthGuard],
   },

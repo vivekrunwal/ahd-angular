@@ -1,0 +1,89 @@
+<div class="bootstrap-wrapper">
+  <div class="container text-center mt">
+    <div class="row">
+      <div class="col-md-5 offset-md-3">
+        <!-- <h1 *ngIf="user">User is {{ user.name }}</h1>
+          <button (click)="getUser()" mat-raised-button>Get Details</button> -->
+
+        <form (ngSubmit)="onSubmit()" style="margin-top: 20px">
+          <h2 style="text-align: left" id="encounter-radio-group-label">
+            Pick your Encounter Type
+          </h2>
+
+          <mat-radio-group
+            [(ngModel)]="credentials.encounterType"
+            aria-labelledby="example-radio-group-label"
+            name="encounterType"
+            class="example-radio-group"
+            aria-label="Episode Type"
+          >
+            <mat-radio-button value="InPatient">In Patient</mat-radio-button>
+            <mat-radio-button value="OutPatient">Out Patient</mat-radio-button>
+          </mat-radio-group>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Encounter Description </mat-label>
+            <input
+              [(ngModel)]="credentials.encounterTypeDescription"
+              required
+              type="text"
+              name="description"
+              matInput
+            />
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Encounter Reason </mat-label>
+            <input
+              [(ngModel)]="credentials.encounterReason"
+              required
+              type="text"
+              name="description"
+              matInput
+            />
+          </mat-form-field>
+
+          <div>
+            <h2 style="text-align: left">Visit: Episode</h2>
+            <mat-radio-group
+              [(ngModel)]="credentials.visit.episodeType"
+              aria-labelledby="example-radio-group-label"
+              name="episodeType"
+              class="episode-radio-group"
+              aria-label="Episode Type"
+            >
+              <mat-radio-button value="InPatient">In Patient</mat-radio-button>
+              <mat-radio-button value="OutPatient"
+                >Out Patient</mat-radio-button
+              >
+            </mat-radio-group>
+            <mat-form-field class="take-width" appearance="outline">
+              <mat-label>UHID </mat-label>
+              <input
+                [(ngModel)]="credentials.visit.uhid"
+                required
+                type="text"
+                name="uhid"
+                matInput
+              />
+            </mat-form-field>
+          </div>
+          <div class="container text-center" style="margin-bottom: 50px">
+            <p class="text-center mt" *ngIf="response">{{ response }}</p>
+            <button type="submit" mat-raised-button color="primary">
+              Create Episode
+            </button>
+            <button
+              style="margin: 10px"
+              type="reset"
+              mat-raised-button
+              color="accent"
+            >
+              Reset
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

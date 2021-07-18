@@ -79,4 +79,18 @@ export class SearchNewComponent implements OnInit {
     this.router.navigateByUrl('/dashboard');
     // console.log(this.passService.getUhid());
   }
+
+  createEpisode() {
+    this.passService.setUhid(this.uhid);
+    this.router.navigateByUrl('/episode');
+  }
+
+  createEncounter() {
+    if (this.uhid != null && this.uhid != '') {
+      this.passService.setUhid(this.uhid);
+      this.router.navigateByUrl('/encounter');
+    } else {
+      this.response = 'Empty UHID';
+    }
+  }
 }

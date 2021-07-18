@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
           console.log(response.token);
           this.loginService.loginUser(response.token);
           this.progress = 100;
-          window.location.href = '/searchPatient';
+          window.location.href = '/searchNew';
         },
         (error) => {
           // error

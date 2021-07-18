@@ -82,6 +82,29 @@
           >
             Add Patient
           </button>
+
+          <div>
+            <button
+              *ngIf="uhid"
+              style="margin: 5px"
+              type="button"
+              mat-raised-button
+              color="accent"
+              (click)="createEpisode()"
+            >
+              Episode
+            </button>
+            <button
+              *ngIf="uhid"
+              style="margin: 5px"
+              type="button"
+              mat-raised-button
+              color="accent"
+              (click)="createEncounter()"
+            >
+              Encounter
+            </button>
+          </div>
         </div>
       </div>
     </div>
