@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class LoginService {
   url = 'http://localhost:8079/user';
+  baseUrl = 'http://localhost:8079';
 
   constructor(private http: HttpClient) {}
 
@@ -39,5 +40,21 @@ export class LoginService {
 
   getToken() {
     return localStorage.getItem('token');
+  }
+
+  otpMobile(SMSPojo: any) {
+    return this.http.post(`${this.baseUrl}/user/otp/mobile`, SMSPojo);
+  }
+
+  otpEmail(emailPojo: any) {
+    return this.http.post(`${this.baseUrl}/user/otp/email`, emailPojo);
+  }
+
+  verifyMobile(otpCred: any) {
+    return this.http.post(`${this.baseUrl}/user/otp/verifyMobile`, otpCred);
+  }
+
+  verifyEmail(otpCred: any) {
+    return this.http.post(`${this.baseUrl}/user/otp/verifyEmail`, otpCred);
   }
 }

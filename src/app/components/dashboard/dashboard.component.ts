@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { PassService } from 'src/app/services/pass.service';
 import { UserService } from 'src/app/services/user.service';
@@ -15,6 +16,8 @@ export class DashboardComponent implements OnInit {
   selectPan: any;
   selectMob: any;
   myUhidCred: any;
+  birthDate: any;
+  tempDate: any;
 
   credentials = {
     firstName: '',
@@ -26,8 +29,11 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private passService: PassService
-  ) {}
+    private passService: PassService,
+    public datepipe: DatePipe
+  ) {
+    this.datepipe.transform(this.credentials.dateOfBirth, 'dd-MM-yyyy');
+  }
 
   ngOnInit(): void {
     this.selected = 'adhaar';
@@ -55,6 +61,12 @@ export class DashboardComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.birthDate != null) {
+      this.tempDate = this.datepipe.transform(this.birthDate, 'dd-MM-yyyy');
+      this.credentials.dateOfBirth = this.tempDate;
+      console.log(this.credentials.dateOfBirth);
+    }
+
     this.userService.createPatient(this.credentials).subscribe(
       (patient) => {
         console.log(patient);
@@ -68,6 +80,6 @@ export class DashboardComponent implements OnInit {
         this.response = 'Invalid Credential or ID alreday exists';
       }
     );
-    // console.log(this.credentials);
+    // console.log(this.birthDate);
   }
 }

@@ -1,3 +1,28 @@
-.full-width{
-    width: 100%;
+.full-width {
+  width: 100%;
+}
+.take-width {
+  width: 70%;
+  align-self: flex-start;
+  margin-left: 15px;
+}
+.rem-width {
+  width: 20%;
+  margin-top: 17px;
+}
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: row;
+  margin: 15px 0;
+  margin-left: 20px;
+}
+
+.episode-radio-group {
+  display: flex;
+  flex-direction: row;
+  margin: 15px 0;
 }

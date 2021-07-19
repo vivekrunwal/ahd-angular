@@ -39,13 +39,14 @@
           <mat-form-field class="full-width" appearance="outline">
             <mat-label> Date of Birth </mat-label>
             <input
-              [(ngModel)]="credentials.dateOfBirth"
+              [(ngModel)]="birthDate"
               required
-              type="text"
+              type="date"
               name="dateOfBirth"
               matInput
             />
           </mat-form-field>
+
           <mat-form-field class="full-width" appearance="outline">
             <mat-label> Address </mat-label>
             <input

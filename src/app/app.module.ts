@@ -25,6 +25,9 @@ import { MatRadioModule } from '@angular/material/radio';
 import { SearchNewComponent } from './components/search-new/search-new.component';
 import { EpisodeComponent } from './components/episode/episode.component';
 import { EncounterComponent } from './components/encounter/encounter.component';
+import { DatePipe } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -53,11 +56,14 @@ import { EncounterComponent } from './components/encounter/encounter.component';
     MatTableModule,
     MatProgressBarModule,
     MatRadioModule,
+    MatIconModule,
+    MatDialogModule,
   ],
   providers: [
     LoginService,
     AuthGuard,
     [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
+    DatePipe,
   ],
   bootstrap: [AppComponent],
 })

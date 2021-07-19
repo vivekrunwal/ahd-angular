@@ -18,7 +18,7 @@
           />
         </div>
         <h1 class="text-center">Register here</h1>
-        <form (ngSubmit)="onSubmit()">
+        <form name="signupForm" (ngSubmit)="onSubmit()">
           <mat-form-field class="full-width" appearance="outline">
             <mat-label> Name </mat-label>
             <input
@@ -29,16 +29,54 @@
               matInput
             />
           </mat-form-field>
-          <mat-form-field class="full-width" appearance="outline">
-            <mat-label> Email or Mobile </mat-label>
-            <input
-              [(ngModel)]="credentials.emailOrMobile"
-              required
-              type="text"
-              name="Email/Mobile"
-              matInput
-            />
-          </mat-form-field>
+          <div class="row">
+            <mat-form-field class="take-width" appearance="outline">
+              <mat-label> Email or Mobile </mat-label>
+              <input
+                [(ngModel)]="credentials.emailOrMobile"
+                required
+                type="text"
+                name="Email/Mobile"
+                matInput
+              />
+              <button
+                type="button"
+                (click)="sendOtp()"
+                mat-button
+                matSuffix
+                mat-icon-button
+              >
+                <mat-icon>send</mat-icon>
+              </button>
+            </mat-form-field>
+            <p class="rem-width text-center" *ngIf="sendOtpResponse">
+              {{ sendOtpResponse }}
+            </p>
+          </div>
+          <div class="row">
+            <mat-form-field class="take-width" appearance="outline">
+              <mat-label> OTP </mat-label>
+              <input
+                [(ngModel)]="verifyOtp.otp"
+                required
+                name="otp"
+                type="number"
+                matInput
+              />
+              <button
+                type="button"
+                (click)="verifyOtpbtn()"
+                mat-button
+                matSuffix
+                mat-icon-button
+              >
+                <mat-icon>verified</mat-icon>
+              </button>
+            </mat-form-field>
+            <p class="rem-width text-center" *ngIf="verifyOtpResponse">
+              {{ verifyOtpResponse }}
+            </p>
+          </div>
 
           <mat-form-field class="full-width" appearance="outline">
             <mat-label> Password </mat-label>
@@ -50,7 +88,7 @@
               matInput
             />
           </mat-form-field>
-          <mat-form-field class="full-width" appearance="outline">
+          <!-- <mat-form-field class="full-width" appearance="outline">
             <mat-label> Role: Doctor/Patient </mat-label>
             <input
               [(ngModel)]="credentials.role"
@@ -59,7 +97,25 @@
               name="role"
               matInput
             />
-          </mat-form-field>
+          </mat-form-field> -->
+
+          <label
+            style="text-align: left; margin-left: 2px"
+            id="encounter-radio-group-label"
+          >
+            Role:
+          </label>
+
+          <mat-radio-group
+            [(ngModel)]="credentials.role"
+            aria-labelledby="example-radio-group-label"
+            name="role"
+            class="example-radio-group"
+            aria-label="Episode Type"
+          >
+            <mat-radio-button value="Doctor">Doctor</mat-radio-button>
+            <mat-radio-button value="Patient">Patient</mat-radio-button>
+          </mat-radio-group>
 
           <p class="text-center mt" *ngIf="error">{{ error }}</p>
           <div class="container text-center">
